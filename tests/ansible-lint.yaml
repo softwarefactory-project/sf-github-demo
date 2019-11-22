@@ -1,0 +1,13 @@
+- name: Install and run ansible-lint
+  hosts: all
+  tasks:
+    - name: Install ansible-lint
+      package:
+        name: ansible-lint
+        state: present
+      become: yes
+
+    - name: Run ansible-lint
+      command: ansible-lint deploy-apache.yaml
+      args:
+        chdir: "{{ zuul.project.src_dir }}"

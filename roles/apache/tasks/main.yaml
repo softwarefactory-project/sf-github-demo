@@ -5,10 +5,11 @@
 - name: Install apache
   package:
     name: httpd
-    state: latest
+    state: present
   become: true
 
-- service:
+- name: Ensure httpd is started
+  service:
     name: httpd
     state: started
     enabled: true
