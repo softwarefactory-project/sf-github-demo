@@ -1,0 +1,10 @@
+- name: Deploy apache
+  hosts: all
+  gather_facts: yes
+  tasks:
+    - name: Include the apache role
+      include_role:
+        name: apache
+
+    - name: Validate apache configuration
+      command: apachectl -t
