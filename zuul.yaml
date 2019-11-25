@@ -1,0 +1,17 @@
+- job:
+    name: demo-testinfra
+    parent: base
+    pre-run: deploy-apache.yaml
+    run: tests/testinfra.yaml
+    nodeset:
+      nodes:
+        - label: cloud-fedora-30
+          name: cloud-fedora-30
+
+- project:
+    check:
+        jobs:
+            - demo-testinfra
+    gate:
+        jobs:
+            - demo-testinfra

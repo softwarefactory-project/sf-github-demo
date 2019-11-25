@@ -1,0 +1,13 @@
+- name: Install and run testinfra
+  hosts: all
+  tasks:
+    - name: Install testinfra
+      package:
+        name: python3-testinfra
+        state: present
+      become: yes
+
+    - name: Run testinfra
+      command: pytest-3 -v tests/test_apache.py
+      args:
+        chdir: "{{ zuul.project.src_dir }}"
