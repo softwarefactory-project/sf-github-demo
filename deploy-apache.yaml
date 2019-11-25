@@ -8,3 +8,4 @@
 
     - name: Validate apache configuration
       command: apachectl -t
+      changed_when: false

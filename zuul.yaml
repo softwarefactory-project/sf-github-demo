@@ -1,0 +1,13 @@
+- job:
+    name: demo-ansible-lint
+    parent: base
+    run: tests/ansible-lint.yaml
+    nodeset: fedora-30-pod
+
+- project:
+    check:
+        jobs:
+            - demo-ansible-lint
+    gate:
+        jobs:
+            - demo-ansible-lint
